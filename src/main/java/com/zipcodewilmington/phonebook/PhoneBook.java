@@ -57,12 +57,17 @@ public class PhoneBook {
     }
 
     public String reverseLookup(String phoneNumber)  {
-        String str = "";
-        List<String> list = new ArrayList<>(phonebook.keySet());
-        for(String key:list){
-            str = key;
+
+        if (phonebook != null) {
+            for (Map.Entry<String, List<String>> entry : phonebook.entrySet()) {
+                if (entry.getValue().contains(phoneNumber)) {
+                    return entry.getKey();
+                }
+            }
         }
-        return str;
+        return null;
+
+
     }
 
     public List<String> getAllContactNames() {
